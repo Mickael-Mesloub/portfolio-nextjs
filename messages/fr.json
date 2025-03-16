@@ -5,5 +5,13 @@
       "title": "Mon portfolio",
       "description": "Bienvenue sur mon portfolio"
     }
+  },
+  "ThemeSwitch": {
+    "placeholder": "Chargement du bouton de changement de thème",
+    "button": {
+      "light": "clair",
+      "dark": "sombre",
+      "action": "Passer en mode {theme}"
+    }
   }
 }
