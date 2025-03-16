@@ -5,5 +5,13 @@
       "title": "My portfolio",
       "description": "Welcome on my portfolio"
     }
+  },
+  "ThemeSwitch": {
+    "placeholder": "Loading Light/Dark Toggle",
+    "button": {
+      "light": "light",
+      "dark": "dark",
+      "action": "Switch to {theme} mode"
+    }
   }
 }
