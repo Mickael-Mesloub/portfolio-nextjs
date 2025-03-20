@@ -1,6 +1,6 @@
 "use client";
 
-import { FiSun, FiMoon } from "react-icons/fi";
+import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useThemeSwitch } from "@/app/hooks/useThemeSwitch";
@@ -9,7 +9,8 @@ export default function ThemeSwitch() {
   const { mounted, currentTheme, handleSwitchTheme, resolvedTheme } =
     useThemeSwitch();
   const t = useTranslations("ThemeSwitch");
-  const themeIcon = resolvedTheme === "dark" ? <FiSun /> : <FiMoon />;
+  const themeIcon =
+    resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
   const buttonTitle = t("button.action", {
     theme: currentTheme === "dark" ? t("button.dark") : t("button.light"),
   });
