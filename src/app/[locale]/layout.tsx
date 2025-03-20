@@ -19,7 +19,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="transition-colors duration-500">
+      <body className="bg-bgBase text-txtBase transition-colors duration-500">
         <Providers>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </Providers>
