@@ -22,7 +22,7 @@ export default function HomePage() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="p-4">
+    <div className="bg-bgSubtle p-4">
       <header className="app__header">
         <ThemeSwitch />
       </header>
