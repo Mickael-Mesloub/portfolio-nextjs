@@ -1,7 +1,8 @@
 import { Locale, useTranslations } from "next-intl";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import ThemeSwitch from "@/app/ui/components/ThemeSwitch";
+import ThemeSwitch from "@/ui/components/ThemeSwitch";
+import { Button } from "@/ui/components/Button/Button";
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -22,11 +23,42 @@ export default function HomePage() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="bg-bgSubtle p-4">
+    <div>
       <header className="app__header">
         <ThemeSwitch />
       </header>
-      <h1>{t("title")}</h1>
+      <h1 className="bg-bgSubtle p-2">{t("title")}</h1>
+
+      <div className="pt-2" />
+
+      <div className="p-2">
+        <Button size="lg">Default</Button>
+      </div>
+      <div className="p-2">
+        <Button size="lg" variant="outline">
+          Outline
+        </Button>
+      </div>
+
+      <div className="pt-2" />
+
+      <div className="p-2">
+        <Button>Default</Button>
+      </div>
+      <div className="p-2">
+        <Button variant="outline">Outline</Button>
+      </div>
+
+      <div className="pt-2" />
+
+      <div className="p-2">
+        <Button size="sm">Default</Button>
+      </div>
+      <div className="p-2">
+        <Button size="sm" variant="outline">
+          Outline
+        </Button>
+      </div>
     </div>
   );
 }

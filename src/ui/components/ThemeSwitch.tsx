@@ -3,7 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useThemeSwitch } from "@/app/hooks/useThemeSwitch";
+import { useThemeSwitch } from "@/hooks/useThemeSwitch";
 
 export default function ThemeSwitch() {
   const { mounted, currentTheme, handleSwitchTheme, resolvedTheme } =
