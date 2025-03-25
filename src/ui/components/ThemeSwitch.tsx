@@ -1,19 +1,26 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useThemeSwitch } from "@/hooks/useThemeSwitch";
+import { Button } from "@/ui/components/Button/Button";
+import {
+  getThemeSwitchButtonClass,
+  getThemeSwitchButtonIcon,
+} from "@/utils/theme.utils";
 
 export default function ThemeSwitch() {
-  const { mounted, currentTheme, handleSwitchTheme, resolvedTheme } =
-    useThemeSwitch();
   const t = useTranslations("ThemeSwitch");
-  const themeIcon =
-    resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
-  const buttonTitle = t("button.action", {
-    theme: currentTheme === "dark" ? t("button.dark") : t("button.light"),
-  });
+  const { mounted, currentTheme, handleSwitchTheme } = useThemeSwitch();
+
+  const getThemeSwitchButtonTitle = () => {
+    return t("button.action", {
+      theme: currentTheme === "dark" ? t("button.dark") : t("button.light"),
+    });
+  };
+
+  const Icon = getThemeSwitchButtonIcon(currentTheme);
+  const className = getThemeSwitchButtonClass(currentTheme);
 
   if (!mounted)
     return (
@@ -29,13 +36,15 @@ export default function ThemeSwitch() {
     );
 
   return (
-    <button
-      className="cursor-pointer"
-      aria-label={buttonTitle}
-      title={buttonTitle}
+    <Button
+      className={className}
+      aria-label={getThemeSwitchButtonTitle()}
+      title={getThemeSwitchButtonTitle()}
       onClick={handleSwitchTheme}
+      size="icon"
+      variant="base"
     >
-      {themeIcon}
-    </button>
+      <Icon size={16} />
+    </Button>
   );
 }
