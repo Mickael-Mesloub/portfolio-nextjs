@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import ThemeSwitch from "@/ui/components/ThemeSwitch";
 import { Button } from "@/ui/components/Button/Button";
-import { ChevronRight, Loader2 } from "lucide-react";
+import { ChevronRight, Loader2, Moon } from "lucide-react";
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -72,6 +72,9 @@ export default function HomePage() {
       <div className="p-2">
         <Button variant="outline" size="icon">
           <ChevronRight />
+        </Button>
+        <Button variant="base" size="icon">
+          <Moon />
         </Button>
       </div>
       <div className="p-2">
