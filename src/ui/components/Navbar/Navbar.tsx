@@ -10,6 +10,11 @@ interface NavbarProps {
   links: NavbarLink[];
 }
 
+/*
+TODO: 
+- Handle responsiveness for mobile and desktop formats
+*/
+
 const Navbar: React.FC<NavbarProps> = ({
   isOpen,
   toggleMenu,
