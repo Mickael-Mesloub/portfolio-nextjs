@@ -1,5 +1,7 @@
 "use client";
 
+import { handleKeyboardActions } from "@/utils/accessibility.utils";
+import { cn } from "@/utils/cn";
 import { memo } from "react";
 
 interface BurgerMenuButtonProps {
@@ -13,13 +15,29 @@ const BurgerMenuButton: React.FC<BurgerMenuButtonProps> = ({
   toggleMenu,
   ariaLabel,
 }) => {
-  // Function to handle keyboard events
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
+  const baseBarClassName =
+    "h-1 w-7 rounded-3xl bg-txtBase transition-transform duration-300";
+  const topBarClassName = cn(baseBarClassName, {
+    "rotate-45 translate-y-2": isOpen,
+  });
+  const middleBarClassName = cn(baseBarClassName, {
+    "opacity-0": isOpen,
+  });
+  const bottomBarClassName = cn(baseBarClassName, {
+    "-rotate-45 -translate-y-2": isOpen,
+  });
+
+  const closeMenu = () => {
+    if (isOpen) {
       toggleMenu();
     }
   };
+
+  const onKeyDown = handleKeyboardActions({
+    Enter: toggleMenu,
+    " ": toggleMenu,
+    Escape: closeMenu,
+  });
 
   return (
     <div
@@ -31,21 +49,9 @@ const BurgerMenuButton: React.FC<BurgerMenuButtonProps> = ({
       aria-expanded={isOpen}
       tabIndex={0}
     >
-      <div
-        className={`h-1 w-7 rounded-3xl bg-txtBase transition-transform duration-300 ${
-          isOpen ? "rotate-45 translate-y-2" : ""
-        }`}
-      ></div>
-      <div
-        className={`h-1 w-7 rounded-3xl bg-txtBase transition-opacity duration-300 ${
-          isOpen ? "opacity-0" : "opacity-100"
-        }`}
-      ></div>
-      <div
-        className={`h-1 w-7 rounded-3xl bg-txtBase transition-transform duration-300 ${
-          isOpen ? "-rotate-45 -translate-y-2" : ""
-        }`}
-      ></div>
+      <div className={topBarClassName}></div>
+      <div className={middleBarClassName}></div>
+      <div className={bottomBarClassName}></div>
     </div>
   );
 };
