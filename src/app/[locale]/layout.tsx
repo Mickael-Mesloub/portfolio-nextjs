@@ -3,14 +3,19 @@ import { notFound } from "next/navigation";
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/app/[locale]/providers";
+import Header from "@/ui/components/Header/Header";
+
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{
+    locale: string;
+  }>;
+}
 
 export default async function LocaleLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+}: LocaleLayoutProps) {
   // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
