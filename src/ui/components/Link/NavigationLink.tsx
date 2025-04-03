@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/utils/cn";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { ComponentProps } from "react";
 
@@ -13,19 +14,19 @@ const NavigationLink: React.FC<ComponentProps<typeof Link>> = ({
   const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : "/";
   const isActive = pathname === href;
 
-  const getLinkStyle = () => {
-    if (isActive) {
-      return { fontWeight: "bold" };
+  const linkClassName = cn(
+    "text-sm group hover:text-navbarHover transition-colors duration-500",
+    {
+      "font-bold text-navbarHover": isActive,
+      "text-txtBase": !isActive,
     }
-    return { fontWeight: "normal" };
-  };
+  );
 
   return (
     <Link
-      className="text-sm group hover:text-navbarHover transition duration-300"
       aria-current={isActive ? "page" : undefined}
       href={href}
-      style={getLinkStyle()}
+      className={linkClassName}
       {...rest}
     >
       {children}
