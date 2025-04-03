@@ -29,7 +29,7 @@ describe("theme.utils", () => {
     it("should return correct class for LIGHT theme", () => {
       const className = getThemeSwitchButtonClass(ThemeEnum.LIGHT);
       expect(className).toContain("cursor-pointer");
-      expect(className).toContain("hover:text-sky-700");
+      expect(className).toContain("hover:text-slate-600");
     });
   });
 

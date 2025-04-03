@@ -14,7 +14,7 @@ const BurgerMenuButton: React.FC<BurgerMenuButtonProps> = ({
   ariaLabel,
 }) => {
   const baseBarClassName =
-    "h-1 w-7 rounded-3xl bg-txtBase transition duration-300 group-hover:bg-navbarHover";
+    "h-1 w-7 rounded-3xl bg-txtBase transition duration-300 group-hover:bg-accent";
   const topBarClassName = cn(baseBarClassName, {
     "rotate-45 translate-y-2": isOpen,
   });

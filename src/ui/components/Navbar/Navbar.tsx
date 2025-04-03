@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({
   links,
 }) => {
   const navClassName = cn(
-    "flex gap-4 transition-transform duration-300 ease-in-out bg-bgNavbar text-bgNavbarHover",
+    "flex gap-4 transition-transform duration-300 ease-in-out bg-bgSubtle text-bgSubtleHover",
     {
       "fixed top-0 left-0 w-full z-40 min-h-dvh flex-col items-center justify-center translate-y-0 md:hidden":
         isOpen,

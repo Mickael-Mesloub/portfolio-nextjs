@@ -1,7 +1,6 @@
 import { Locale, useTranslations } from "next-intl";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import ThemeSwitch from "@/ui/components/ThemeSwitch";
 import { Button } from "@/ui/components/Button/Button";
 import { ChevronRight, Loader2, Moon } from "lucide-react";
 
@@ -25,10 +24,26 @@ export default function HomePage() {
 
   return (
     <div>
-      <header className="app__header">
-        <ThemeSwitch />
-      </header>
-      <h1 className="bg-bgSubtle p-2">{t("title")}</h1>
+      <div className="flex flex-col gap-4 p-4 w-[250px] bg-bgSubtle mt-6 shadow-md shadow-txtBase/10 hover:shadow-lg hover:shadow-txtBase/20 transition-shadow mx-auto rounded-xl">
+        <p className="text-txtBase text-xl">{t("title")}</p>
+        <div className="flex flex-col gap-2">
+          <p className="text-txtSubtle text-sm">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit quisque
+            faucibus.
+          </p>
+          <p className="text-txtSubtle text-sm">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit quisque
+            faucibus.
+          </p>
+          <p className="text-txtSubtle text-sm">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit quisque
+            faucibus.
+          </p>
+        </div>
+        <div className="flex justify-end items-center">
+          <p className="text-accent font-bold text-xs">En savoir plus</p>
+        </div>
+      </div>
 
       <div className="pt-2" />
 

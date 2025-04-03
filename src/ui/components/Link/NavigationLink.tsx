@@ -15,9 +15,9 @@ const NavigationLink: React.FC<ComponentProps<typeof Link>> = ({
   const isActive = pathname === href;
 
   const linkClassName = cn(
-    "text-sm group hover:text-navbarHover transition-colors duration-500",
+    "text-sm group hover:text-accent transition-colors duration-500",
     {
-      "font-bold text-navbarHover": isActive,
+      "font-bold text-accent": isActive,
       "text-txtBase": !isActive,
     }
   );
@@ -30,7 +30,7 @@ const NavigationLink: React.FC<ComponentProps<typeof Link>> = ({
       {...rest}
     >
       {children}
-      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-navbarHover"></span>
+      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-accent"></span>
     </Link>
   );
 };

@@ -2,6 +2,7 @@
 
 import { NavbarLink } from "@/types/navbarLinks";
 import Navbar from "@/ui/components/Navbar/Navbar";
+import ThemeSwitch from "@/ui/components/ThemeSwitch";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,8 +49,8 @@ const Header: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <header className="flex justify-between items-center p-4">
-      <Link href="/" className="flex items-center gap-1">
+    <header className="flex justify-between items-center p-4 min-h-6">
+      <Link href="/" className="flex items-center min-w-[40px]">
         <Image
           src="/logo.webp"
           alt="App logo"
@@ -58,6 +59,9 @@ const Header: React.FC = () => {
           priority
         />
       </Link>
+      <div className="flex grow w-full min-w-12 items-center justify-center md:justify-end">
+        <ThemeSwitch />
+      </div>
       <Navbar
         burgerMenuAriaLabel={burgerMenuAriaLabel}
         isOpen={isOpen}
