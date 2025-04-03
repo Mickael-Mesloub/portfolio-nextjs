@@ -22,14 +22,14 @@ const NavigationLink: React.FC<ComponentProps<typeof Link>> = ({
 
   return (
     <Link
-      className="text-sm group transition duration-300"
+      className="text-sm group hover:text-navbarHover transition duration-300"
       aria-current={isActive ? "page" : undefined}
       href={href}
       style={getLinkStyle()}
       {...rest}
     >
       {children}
-      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-txtBase"></span>
+      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-navbarHover"></span>
     </Link>
   );
 };

@@ -7,13 +7,13 @@ interface NavbarLinksProps {
 
 const NavbarLinks: React.FC<NavbarLinksProps> = ({ links }) => {
   return (
-    <nav className="flex gap-4">
+    <>
       {links.map((link, i) => (
         <NavigationLink key={i} href={link.href}>
           {link.title}
         </NavigationLink>
       ))}
-    </nav>
+    </>
   );
 };
 
