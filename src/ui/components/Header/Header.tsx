@@ -34,13 +34,17 @@ const Header: React.FC = () => {
     setIsOpen((prev) => !prev);
   }, []);
 
-  // Disable vertical scroll when menu is open
+  // Disable scroll when menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add("overflow-hidden");
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove("overflow-hidden");
+      document.body.style.overflow = "";
     }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   return (
