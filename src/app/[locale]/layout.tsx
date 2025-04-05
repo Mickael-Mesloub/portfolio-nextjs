@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/app/[locale]/providers";
 import Header from "@/ui/components/Header/Header";
-import { Inter } from "next/font/google";
+import { Montserrat_Alternates } from "next/font/google";
 import localFont from "next/font/local";
 
 interface LocaleLayoutProps {
@@ -14,10 +14,10 @@ interface LocaleLayoutProps {
   }>;
 }
 
-const inter = Inter({
+const montserratAlternates = Montserrat_Alternates({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-montserratAlternates",
   display: "swap",
 });
 
@@ -62,9 +62,9 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${inter.variable} ${winkySans.variable}`}
+      className={`${winkySans.variable} ${montserratAlternates.variable}`}
     >
-      <body className="font-winky bg-bgBase text-txtBase transition-colors duration-500">
+      <body className="font-montserratAlternates bg-bgBase text-txtBase transition-colors duration-500">
         <Providers>
           <NextIntlClientProvider>
             <Header />
