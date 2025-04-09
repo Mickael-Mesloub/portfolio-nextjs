@@ -1,22 +1,21 @@
-import { memo } from "react";
+"use client";
+
+import { memo, useCallback, useEffect, useState } from "react";
 import BurgerMenuButton from "@/ui/components/Navbar/BurgerMenuButton";
 import NavbarLinks from "@/ui/components/Navbar/NavbarLinks";
-import { NavbarLink } from "@/types/navbarLinks";
 import { cn } from "@/utils/cn";
+import { useTranslations } from "next-intl";
+import { useNavLinks } from "@/hooks/useNavLinks";
 
-interface NavbarProps {
-  isOpen: boolean;
-  toggleMenu: () => void;
-  burgerMenuAriaLabel: string;
-  links: NavbarLink[];
-}
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const t = useTranslations();
+  const navbarLinks = useNavLinks();
 
-const Navbar: React.FC<NavbarProps> = ({
-  isOpen,
-  toggleMenu,
-  burgerMenuAriaLabel,
-  links,
-}) => {
+  const burgerMenuAriaLabel = isOpen
+    ? t("common.aria.closeMenu")
+    : t("common.aria.openMenu");
+
   const navClassName = cn(
     "flex gap-4 transition-transform duration-300 ease-in-out bg-bgSubtle text-bgSubtleHover",
     {
@@ -27,10 +26,27 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   );
 
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  // Disable scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <>
       <nav className={navClassName}>
-        <NavbarLinks links={links} />
+        <NavbarLinks links={navbarLinks} />
       </nav>
       <BurgerMenuButton
         isOpen={isOpen}
