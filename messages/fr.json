@@ -31,5 +31,8 @@
       "en": "English",
       "fr": "Français"
     }
+  },
+  "Footer": {
+    "copyrights": "{date} | Mickaël Mesloub"
   }
 }

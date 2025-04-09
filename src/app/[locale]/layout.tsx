@@ -6,6 +6,7 @@ import { Providers } from "@/app/[locale]/providers";
 import Header from "@/ui/components/Header/Header";
 import { Raleway } from "next/font/google";
 import localFont from "next/font/local";
+import Footer from "@/ui/components/Footer/Footer";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
           <NextIntlClientProvider>
             <Header />
             {children}
+            <Footer />
           </NextIntlClientProvider>
         </Providers>
       </body>
