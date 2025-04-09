@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/app/[locale]/providers";
 import Header from "@/ui/components/Header/Header";
-import { Montserrat_Alternates } from "next/font/google";
+import { Raleway } from "next/font/google";
 import localFont from "next/font/local";
 
 interface LocaleLayoutProps {
@@ -14,10 +14,10 @@ interface LocaleLayoutProps {
   }>;
 }
 
-const montserratAlternates = Montserrat_Alternates({
+const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserratAlternates",
+  weight: ["400", "700"],
+  variable: "--font-raleway",
   display: "swap",
 });
 
@@ -62,9 +62,9 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${winkySans.variable} ${montserratAlternates.variable}`}
+      className={`${winkySans.variable} ${raleway.variable}`}
     >
-      <body className="font-montserratAlternates bg-bgBase text-txtBase transition-colors duration-500">
+      <body className="font-raleway bg-bgBase text-txtBase transition-colors duration-500">
         <Providers>
           <NextIntlClientProvider>
             <Header />
