@@ -1,4 +1,11 @@
 {
+  "common": {
+    "aria": {
+      "closeMenu": "Fermer le menu",
+      "openMenu": "Ouvrir le menu"
+    }
+  },
+
   "HomePage": {
     "title": "Bonjour monde !",
     "metadata": {
@@ -6,6 +13,7 @@
       "description": "Bienvenue sur mon portfolio"
     }
   },
+
   "ThemeSwitch": {
     "placeholder": "Chargement du bouton de changement de thème",
     "button": {
@@ -13,5 +21,22 @@
       "dark": "sombre",
       "action": "Passer en mode {theme}"
     }
+  },
+
+  "Navbar": {
+    "home": "Accueil",
+    "projects": "Mes projets",
+    "contact": "Me contacter",
+    "language": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+
+  "Footer": {
+    "navSection": {
+      "title": "Mon portfolio"
+    },
+    "copyrights": "{date} | Mickaël Mesloub"
   }
 }

@@ -32,7 +32,7 @@ export const getThemeSwitchButtonClass: GetThemeSwitchButtonClassType = (
 ) => {
   return cn("cursor-pointer", {
     "hover:text-yellow-500": currentTheme === ThemeEnum.DARK,
-    "hover:text-sky-700": currentTheme === ThemeEnum.LIGHT,
+    "hover:text-slate-600": currentTheme === ThemeEnum.LIGHT,
   });
 };
 
