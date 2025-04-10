@@ -1,5 +1,3 @@
-"use client";
-
 import { useNavLinks } from "@/hooks/useNavLinks";
 import Link from "next/link";
 
