@@ -32,7 +32,11 @@
       "fr": "Français"
     }
   },
+
   "Footer": {
+    "navSection": {
+      "title": "Mon portfolio"
+    },
     "copyrights": "{date} | Mickaël Mesloub"
   }
 }
