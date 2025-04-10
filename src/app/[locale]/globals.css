@@ -8,8 +8,8 @@
   --color-txtSubtle: #4a4a4a;
   --color-accent: #e63946;
 
-  --font-winky: var(--font-winky);
   --font-raleway: var(--font-raleway);
+  --font-antonSC: var(--antonSC);
 }
 
 .dark {

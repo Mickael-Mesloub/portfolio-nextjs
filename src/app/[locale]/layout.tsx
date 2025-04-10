@@ -4,8 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Providers } from "@/app/[locale]/providers";
 import Header from "@/ui/components/Header/Header";
-import { Raleway } from "next/font/google";
-import localFont from "next/font/local";
+import { Raleway, Anton_SC } from "next/font/google";
 import Footer from "@/ui/components/Footer/Footer";
 
 interface LocaleLayoutProps {
@@ -22,30 +21,10 @@ const raleway = Raleway({
   display: "swap",
 });
 
-const winkySans = localFont({
-  src: [
-    {
-      path: "../../../public/fonts/WinkySans-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/WinkySans-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/WinkySans-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/WinkySans-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-winky",
+const antonSC = Anton_SC({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-antonSC",
   display: "swap",
 });
 
@@ -63,7 +42,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${winkySans.variable} ${raleway.variable}`}
+      className={`${raleway.variable} ${antonSC.variable}`}
     >
       <body className="font-raleway bg-bgBase text-txtBase transition-colors duration-500">
         <Providers>

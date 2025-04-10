@@ -25,7 +25,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="flex flex-col gap-4 p-4 w-[250px] bg-bgSubtle mt-6 shadow-md shadow-txtBase/10 hover:shadow-lg hover:shadow-txtBase/20 transition-shadow mx-auto rounded-xl">
-        <p className="font-winky text-txtBase text-xl">{t("title")}</p>
+        <p className="font-antonSC text-txtBase text-xl">{t("title")}</p>
         <div className="flex flex-col gap-2">
           <p className="text-txtSubtle text-sm">
             Lorem ipsum dolor sit amet consectetur adipiscing elit quisque

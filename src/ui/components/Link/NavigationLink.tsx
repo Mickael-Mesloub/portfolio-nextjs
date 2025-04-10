@@ -15,7 +15,7 @@ const NavigationLink: React.FC<ComponentProps<typeof Link>> = ({
   const isActive = pathname === href;
 
   const linkClassName = cn(
-    "text-sm group hover:text-accent transition-colors duration-300",
+    "text-sm font-antonSC group hover:text-accent transition-colors duration-300",
     {
       "font-bold text-accent": isActive,
       "text-txtBase": !isActive,
