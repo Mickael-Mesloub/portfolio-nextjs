@@ -4,49 +4,85 @@ import { Button } from "@/ui/components/Button/Button";
 import { ChevronDown, Languages } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { routing } from "@/i18n/routing";
-import { Locale, useTranslations } from "next-intl";
-import { useTransition } from "react";
-import { useParams } from "next/navigation";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { useRef } from "react";
+import LocaleSwitcherListItem from "@/ui/components/LocaleSwitcher/LocaleSwitcherListItem";
+import { handleKeyboardActions } from "@/utils/accessibility.utils";
+import { useSwitchLocale } from "@/hooks/useSwitchLocale";
+import { useTranslations } from "next-intl";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 
 const LocaleSwitcherButton: React.FC = () => {
+  const ulRef = useRef<HTMLUListElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const {
+    isPending,
+    isMenuOpen,
+    toggleMenu,
+    closeMenu,
+    currentLocale,
+    onChangeLanguage,
+  } = useSwitchLocale();
   const t = useTranslations("LocaleSwitcher");
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const pathname = usePathname();
-  const params = useParams();
+  useOnClickOutside(buttonRef, () => closeMenu());
 
-  const className = cn("relative", {
+  const buttonClassName = cn("relative gap-0", {
     "transition-opacity [&:disabled]:opacity-30": isPending,
   });
 
-  const onChangeLanguage = (value: Locale) => {
-    startTransition(() => {
-      router.replace(
-        // @ts-expect-error -- TypeScript will validate that only known `params`
-        // are used in combination with a given `pathname`. Since the two will
-        // always match for the current route, we can skip runtime checks.
+  const ulClassName = cn(
+    "absolute hidden bg-bgSubtle left-0 top-8 rounded-md",
+    {
+      "block z-50 shadow-md shadow-txtBase/20": isMenuOpen,
+    }
+  );
 
-        { pathname, params },
-        { locale: value }
-      );
-    });
-  };
+  const chevronIconClassName = cn("transition-transform duration-300", {
+    "rotate-180": isMenuOpen,
+  });
+
+  const onKeyDown = handleKeyboardActions({
+    Enter: toggleMenu,
+    " ": toggleMenu,
+    Escape: closeMenu,
+  });
 
   return (
     <Button
       disabled={isPending}
-      variant="outline"
-      size="sm"
-      className={className}
+      variant="base"
+      size="icon"
+      className={buttonClassName}
+      onClick={toggleMenu}
+      aria-label={t("label")}
+      onKeyDown={onKeyDown}
+      ref={buttonRef}
+      aria-haspopup="menu"
+      aria-controls="locale-menu"
+      aria-expanded={isMenuOpen}
+      id="locale-switcher-button"
     >
-      <ul className="absolute hidden group-hover:block bg-bgSubtle left-0 top-2"></ul>
-      <Languages /> <ChevronDown />
-      {routing.locales.map((cur) => (
-        <li key={cur} className="text-sm" onClick={() => onChangeLanguage(cur)}>
-          {t("locale", { locale: cur })}
-        </li>
-      ))}
+      <Languages />{" "}
+      <span className={chevronIconClassName}>
+        <ChevronDown />
+      </span>
+      <ul
+        ref={ulRef}
+        className={ulClassName}
+        role="menu"
+        id="locale-menu"
+        aria-labelledby="locale-switcher-button"
+        tabIndex={-1}
+      >
+        {routing.locales.map((cur) => (
+          <LocaleSwitcherListItem
+            key={cur}
+            value={cur}
+            title={t("locale", { locale: cur })}
+            currentLocale={currentLocale}
+            onChangeLanguage={onChangeLanguage}
+          />
+        ))}
+      </ul>
     </Button>
   );
 };

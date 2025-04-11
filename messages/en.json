@@ -42,6 +42,6 @@
 
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale}"
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {🇫🇷 Français}}"
   }
 }
