@@ -30,9 +30,11 @@ const LocaleSwitcherButton: React.FC = () => {
   });
 
   const ulClassName = cn(
-    "absolute hidden bg-bgSubtle left-0 top-8 rounded-md",
+    "absolute bg-bgSubtle left-0 top-full transition-all duration-200 ease-out transform origin-top rounded-md",
     {
-      "block z-50 shadow-md shadow-txtBase/20": isMenuOpen,
+      "opacity-100 scale-100 visible z-50 shadow-md shadow-txtBase/20":
+        isMenuOpen,
+      "opacity-0 scale-95 invisible pointer-events-none": !isMenuOpen,
     }
   );
 
@@ -60,6 +62,7 @@ const LocaleSwitcherButton: React.FC = () => {
       aria-controls="locale-menu"
       aria-expanded={isMenuOpen}
       id="locale-switcher-button"
+      title={t("label")}
     >
       <Languages />{" "}
       <span className={chevronIconClassName}>
