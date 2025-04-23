@@ -38,5 +38,10 @@
       "title": "My portfolio"
     },
     "copyrights": "{date} | Mickaël Mesloub"
+  },
+
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {🇫🇷 Français}}"
   }
 }
