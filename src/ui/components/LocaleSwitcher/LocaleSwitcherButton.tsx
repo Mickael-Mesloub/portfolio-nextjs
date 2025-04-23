@@ -83,6 +83,7 @@ const LocaleSwitcherButton: React.FC = () => {
             title={t("locale", { locale: cur })}
             currentLocale={currentLocale}
             onChangeLanguage={onChangeLanguage}
+            closeMenu={closeMenu}
           />
         ))}
       </ul>
