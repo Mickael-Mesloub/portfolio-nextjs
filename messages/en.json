@@ -1,4 +1,11 @@
 {
+  "common": {
+    "aria": {
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu"
+    }
+  },
+
   "HomePage": {
     "title": "Hello world!",
     "metadata": {
@@ -6,6 +13,7 @@
       "description": "Welcome on my portfolio"
     }
   },
+
   "ThemeSwitch": {
     "placeholder": "Loading Light/Dark Toggle",
     "button": {
@@ -13,5 +21,27 @@
       "dark": "dark",
       "action": "Switch to {theme} mode"
     }
+  },
+
+  "Navbar": {
+    "home": "Home",
+    "projects": "My projects",
+    "contact": "Contact me",
+    "language": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+
+  "Footer": {
+    "navSection": {
+      "title": "My portfolio"
+    },
+    "copyrights": "{date} | Mickaël Mesloub"
+  },
+
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇬🇧 English} other {🇫🇷 Français}}"
   }
 }
